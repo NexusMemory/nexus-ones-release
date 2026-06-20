@@ -30,6 +30,8 @@ https://github.com/id438658674-blip/nexus-ones-release/releases/tag/v0.1.9
 发现 Bug？
 
 欢迎提交反馈。
+进入：https://github.com/id438658674-blip/nexus-ones-release/issues
+点击“New issue”-“bug 提交”即可提交您的问题，我们期待您的建议与建议
 
 ---
 
