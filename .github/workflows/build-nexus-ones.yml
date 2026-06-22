@@ -1,0 +1,67 @@
+name: Build Nexus Ones
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: macos-latest
+            args: --bundles dmg
+          - platform: windows-latest
+            args: --bundles nsis
+
+    runs-on: ${{ matrix.platform }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: pnpm
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.0.7
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: ./1-Nexus Ones/src-tauri -> target
+
+      - name: Install dependencies
+        working-directory: ./1-Nexus Ones
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        working-directory: ./1-Nexus Ones
+        run: CI=true pnpm typecheck
+
+      - name: Build frontend
+        working-directory: ./1-Nexus Ones
+        run: CI=true pnpm build
+
+      - name: Build Tauri app
+        working-directory: ./1-Nexus Ones
+        run: CI=true pnpm tauri build ${{ matrix.args }}
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Nexus-Ones-${{ matrix.platform }}
+          path: |
+            1-Nexus Ones/src-tauri/target/release/bundle/dmg/*.dmg
+            1-Nexus Ones/src-tauri/target/release/bundle/nsis/*.exe
