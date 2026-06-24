@@ -1,45 +1,18 @@
 {
-
-  "schemaVersion": "1.0",
-
-  "appName": "Nexus Ones",
-
-  "latestVersion": "v0.2.4-beta.1",
-
-  "latestBuild": "0.2.4-beta.1",
-
-  "releaseName": "Nexus Ones v0.2.4 Beta 1",
-
-  "channel": "public_beta",
-
-  "publishedAt": "2026-06-23T00:03:05+08:00",
-
-  "summary": "Nexus Ones v0.2.4 Beta 1 测试版更新",
-
-  "changelog": [
-
-    "实装 Plugin Runtime 与首页插件槽接入",
-
-    "新增 hello.nexus 示例插件验证",
-
-    "增强 Status Light 红黄绿灯亮度、呼吸与脉冲效果",
-
-    "修复 Windows 下 Status Light 单击设置菜单问题",
-
-    "统一 P1/P2/P3/P4 优先级体系",
-
-    "优化旧数据目录提示，可关闭或不再提示",
-
-    "保持 dataRoot、Production、Sandbox、插件与备份目录安全兼容"
-
-  ],
-
-  "downloadUrl": "GitHub Release",
-
-  "releaseUrl": "GitHub Release",
-
-  "minimumSupportedVersion": "0.2.3-beta.1",
-
-  "forceUpdate": false
-
+  "version": "0.2.4-beta.7",
+  "displayVersion": "v0.2.4.6 Beta",
+  "pub_date": "2026-06-24T00:00:00Z",
+  "platforms": {
+    "darwin-aarch64": {
+      "url": "https://github.com/NexusMemory/nexus-ones-release/releases/download/v0.2.4.6-beta/Nexus%20Ones_0.2.4-beta.7_aarch64.dmg",
+      "signature": "",
+      "sha256": ""
+    },
+    "windows-x86_64": {
+      "url": "",
+      "signature": "",
+      "sha256": ""
+    }
+  },
+  "notes": "Nexus Ones v0.2.4.6 Beta：汇总 v0.2.4-beta.1 之后的数据安全、教学进度插件、保存按钮、四象限、课程表、Calendar、RGB 红绿灯、Nexus Ring、Update Center 与 Nexus Control 发布流程修复。"
 }
